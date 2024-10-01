@@ -40,3 +40,67 @@
 .read-the-docs {
   color: #888;
 }
+.app {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Flashcard container styling */
+.flashcard {
+  width: 320px;
+  height: 220px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8); 
+  border-radius: 15px;
+  border: 2px solid #ddd;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+  cursor: pointer;
+  position: relative;
+  padding: 20px;
+  backdrop-filter: blur(10px); /* Adds blur effect to background */
+  border: 2px solid;
+  border-image: linear-gradient(45deg, cyan, magenta) 1;
+}
+
+/* Text inside the flashcard */
+.flashcard-inner {
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+  transition: opacity 0.3s ease; /* Smooth opacity transition */
+}
+
+/* Add hover effect for glowing and scaling the card */
+.flashcard:hover {
+  transform: scale(1.05); /* Slight scale up when hovered */
+  box-shadow: 0 10px 25px rgba(0, 255, 255, 0.8); /* Glowing cyan shadow */
+}
+
+.flashcard:active {
+  transform: scale(0.98); /* Slight compression when clicked */
+}
+
+.flashcard:hover::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 15px;
+  background: linear-gradient(45deg, rgba(0, 255, 255, 0.5), rgba(0, 255, 255, 0));
+  opacity: 0.8;
+  z-index: -1;
+  filter: blur(8px);
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
