@@ -49,6 +49,7 @@ GIF created with ...  [ScreenToGif](https://www.screentogif.com/)
 ## Notes
 
 Describe any challenges encountered while building the app.
+It was easy to implemeent, Once I saw how to implement the flashcards
 
 ## License
 
