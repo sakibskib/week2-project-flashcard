@@ -37,7 +37,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<img src='http://i.imgur.com/osjcJuP.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://imgur.com/osjcJuP' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  [ScreenToGif](https://www.screentogif.com/)
@@ -49,7 +49,8 @@ GIF created with ...  [ScreenToGif](https://www.screentogif.com/)
 ## Notes
 
 Describe any challenges encountered while building the app.
-It was easy to implemeent, Once I saw how to implement the flashcards
+
+**It was easy to implement, Once I saw how to implement the flashcards**
 
 ## License
 
