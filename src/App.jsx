@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Flashcard from './components/Flashcard';
 import './App.css';
-import background from './assets/bgfire.jpg'
+import background from './assets/bgfire.jpg';
+
 // Firefighting 10s and 18s data
 const flashcardsData = [
   { question: "Firefighting 10: Keep informed on fire weather conditions and forecasts", answer: "Standard Firefighting Orders" },
@@ -32,17 +33,49 @@ const flashcardsData = [
   { question: "Firefighting 18: Taking a nap near the fireline", answer: "Watch Out Situations" }
 ];
 
-
 const App = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const [guess, setGuess] = useState(''); // State for the user's guess
+  const [feedback, setFeedback] = useState(''); // Feedback for correct/incorrect answer
+  const [streak, setStreak] = useState(0); // Streak of correct answers
 
-  const randomizeCard = () => {
-    const randomIndex = Math.floor(Math.random() * flashcardsData.length);
-    setCurrentCardIndex(randomIndex);
+  const handleInputChange = (e) => {
+    setGuess(e.target.value); // Update guess state on input change
+  };
+
+  const handleSubmit = () => {
+    const currentCard = flashcardsData[currentCardIndex];
+    if (guess.toLowerCase().trim() === currentCard.answer.toLowerCase().trim()) {
+      setFeedback('Correct!');
+      setStreak(streak + 1); // Increment streak on correct answer
+    } else {
+      setFeedback('Incorrect!');
+      setStreak(0); // Reset streak on incorrect answer
+    }
+    setGuess(''); // Clear guess after submission
+  };
+
+  const handleNext = () => {
+    setFeedback(''); // Clear feedback on navigation
+    if (currentCardIndex < flashcardsData.length - 1) {
+      setCurrentCardIndex(currentCardIndex + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    setFeedback(''); // Clear feedback on navigation
+    if (currentCardIndex > 0) {
+      setCurrentCardIndex(currentCardIndex - 1);
+    }
+  };
+
+  const handleShuffle = () => {
+    setCurrentCardIndex(Math.floor(Math.random() * flashcardsData.length));
+    setFeedback(''); // Clear feedback when shuffling
   };
 
   return (
-    <div className="app"    >
+    <div className="app">
       <h1>Firefighting 10s & 18s Flashcards</h1>
       <p>A study tool for learning firefighting safety rules and situations</p>
       <p>Total Cards: {flashcardsData.length}</p>
@@ -52,7 +85,25 @@ const App = () => {
         answer={flashcardsData[currentCardIndex].answer}
       />
 
-      <button onClick={randomizeCard}>Next Card</button>
+      {/* Input for user guess */}
+      <input 
+        type="text" 
+        value={guess} 
+        onChange={handleInputChange} 
+        placeholder="Enter your guess" 
+      />
+      <button onClick={handleSubmit}>Submit Guess</button>
+      
+      {/* Feedback about the guess */}
+      <p>{feedback}</p>
+
+      {/* Navigation buttons */}
+      <button onClick={handlePrevious} disabled={currentCardIndex === 0}>Back</button>
+      <button onClick={handleNext} disabled={currentCardIndex === flashcardsData.length - 1}>Next</button>
+      <button onClick={handleShuffle}>Shuffle</button>
+
+      {/* Display streak */}
+      <p>Current Streak: {streak}</p>
     </div>
   );
 };
