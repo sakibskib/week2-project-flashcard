@@ -1,4 +1,4 @@
-# Web Development Project 3 - *Name of App Here*
+# Web Development Project 3 - *Firefighting 10s and 18s*
 
 Submitted by: **Sheikh Shihabun Sakib**
 
